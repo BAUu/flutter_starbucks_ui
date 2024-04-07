@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:starbucks_ui/data/coupon_reward.dart';
 import 'package:starbucks_ui/data/starbucks_appbar_page.dart';
 import 'package:starbucks_ui/data/starbucks_bottom_navigation_bar.dart';
 
@@ -10,6 +11,9 @@ class StarbucksList extends StatefulWidget {
 }
 
 class _StarbucksListState extends State<StarbucksList> {
+  double _progressValue = 0.6; // 프로그래스바의 현재값
+  double _maxValue = 1.0; // 프로그래스바의 최대값
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,6 +84,7 @@ class _StarbucksListState extends State<StarbucksList> {
                                   fontSize: 14,
                                 ),
                               ),
+
                             ],
                           ),
                         ),
@@ -92,10 +97,22 @@ class _StarbucksListState extends State<StarbucksList> {
             backgroundColor: Colors.transparent,
             pinned: true,
           ),
+          SliverToBoxAdapter(
+            child: CouponReward(),
+          ),
+
           SliverList(
             delegate: SliverChildListDelegate(
               [
-                // Add more list items here if needed
+                Container(
+                  child: Image.asset('assets/images/starbucks_event_1.png', fit: BoxFit.cover,),
+                ),
+                Container(
+                  child: Image.asset('assets/images/starbucks_event_2.png', fit: BoxFit.cover,),
+                ),
+                Container(
+                  child: Image.asset('assets/images/starbucks_event_3.png', fit: BoxFit.cover,),
+                ) // Add more list items here if needed
               ],
             ),
           ),
